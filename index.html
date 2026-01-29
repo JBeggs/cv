@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jody Beggs | The Mercenary Engineer</title>
+    <link rel="icon" type="image/png" href="mercenary_logo.png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #050505;
+            color: #f1f1f1;
+            scroll-behavior: smooth;
+        }
+        .deadpool-red { color: #e62117; }
+        .deadpool-bg-red { background-color: #e62117; }
+        .glass {
+            background: rgba(15, 15, 15, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .card-hover:hover {
+            border-color: #e62117;
+            transform: translateY(-4px);
+            transition: all 0.3s ease;
+        }
+        .image-glow {
+            box-shadow: 0 0 30px rgba(230, 33, 23, 0.2);
+        }
+        .identity-btn.active {
+            background-color: #e62117;
+            color: white;
+            border-color: #e62117;
+        }
+        .skill-tag.active {
+            background-color: #e62117;
+            border-color: #e62117;
+            color: white;
+        }
+    </style>
+</head>
+<body class="selection:bg-red-600 selection:text-white">
+
+    <!-- App Header -->
+    <header class="fixed top-0 w-full z-50 glass border-b border-white/5 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full border border-red-500/30 overflow-hidden">
+                    <img src="mercenary_logo.png" alt="Logo" class="w-full h-full object-cover">
+                </div>
+                <span class="text-xl font-bold tracking-tight">JODY<span class="deadpool-red underline decoration-2 underline-offset-4">BEGGS</span></span>
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex gap-8 text-sm font-medium text-white/60">
+                <a href="#identity" class="hover:text-red-500 transition">Identity</a>
+                <a href="#experience" class="hover:text-red-500 transition">History</a>
+                <a href="#projects" class="hover:text-red-500 transition">Arsenal</a>
+                <a href="#skills" class="hover:text-red-500 transition">Intel</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileMenu()" class="md:hidden text-white text-xl p-2">
+                    <i class="fas fa-bars" id="menu-icon"></i>
+                </button>
+
+                <div class="hidden sm:flex gap-4">
+                    <a href="cv.html" target="_blank" class="flex items-center gap-2 text-sm font-bold bg-white/5 hover:bg-white/10 px-4 py-2 rounded-lg border border-white/10 transition">
+                        <i class="fas fa-file-alt deadpool-red"></i> View C.V.
+                    </a>
+                    <a href="Jody_Beggs_CV.pdf" target="_blank" class="flex items-center gap-2 text-sm font-bold bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg transition text-white">
+                        <i class="fas fa-download"></i> Download PDF
+                    </a>
+                </div>
+                <a href="mailto:django.python.pro@gmail.com" class="hidden sm:flex items-center gap-2 text-sm font-bold bg-white/5 hover:bg-white/10 px-4 py-2 rounded-lg border border-white/10 transition">
+                    <i class="fas fa-envelope deadpool-red"></i> Hire Me
+                </a>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full glass border-b border-white/5 py-6 px-6 flex flex-col gap-6 text-center animate-in slide-in-from-top duration-300">
+            <a href="#identity" onclick="toggleMobileMenu()" class="text-lg font-bold hover:text-red-500 transition">Identity</a>
+            <a href="#experience" onclick="toggleMobileMenu()" class="text-lg font-bold hover:text-red-500 transition">History</a>
+            <a href="#projects" onclick="toggleMobileMenu()" class="text-lg font-bold hover:text-red-500 transition">Arsenal</a>
+            <a href="#skills" onclick="toggleMobileMenu()" class="text-lg font-bold hover:text-red-500 transition">Intel</a>
+            <div class="flex flex-col gap-4 pt-4 border-t border-white/5">
+                <a href="cv.html" class="bg-white/5 py-3 rounded-xl font-bold">View C.V.</a>
+                <a href="Jody_Beggs_CV.pdf" class="bg-red-600 py-3 rounded-xl font-bold">Download PDF</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Identity Section (The App Hero) -->
+    <section id="identity" class="pt-24 pb-12 px-6 min-h-[60vh] flex flex-col justify-center">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12 lg:gap-20">
+            <!-- Image Content (Moved to Left) -->
+            <div class="w-full md:w-5/12 relative group order-2 md:order-1">
+                <div id="identity-glow" class="absolute -inset-4 bg-red-600 rounded-[2rem] blur-3xl opacity-20 transition-all duration-700"></div>
+                <div class="relative rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl aspect-square">
+                    <img id="main-image" src="Generated_image.png" alt="Jody Beggs" class="w-full h-full object-cover transition-all duration-500 scale-100">
+                    <div id="image-caption" class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black to-transparent">
+                        <p class="text-xl font-bold italic" id="identity-title">The Professional</p>
+                        <p class="text-white/60 text-[10px]" id="identity-desc">Ready for the corporate world.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text Content (Moved to Right) -->
+            <div class="w-full md:w-7/12 order-1 md:order-2">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-500 text-[9px] font-bold mb-4 tracking-widest uppercase">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+                    </span>
+                    Identity Confirmed
+                </div>
+                <h1 class="text-3xl md:text-5xl font-black mb-4 leading-tight tracking-tighter">
+                    I CODE FOR <span class="deadpool-red italic">REVENGE.</span><br>
+                    <span class="text-white/40">AND COFFEE.</span>
+                </h1>
+                <p class="text-base text-white/60 mb-8 max-w-md leading-relaxed">
+                    Systems architect by day, bug assassin by night. Specializing in high-performance Django backends and robust IoT hardware.
+                </p>
+                
+                <div class="flex flex-wrap gap-4 mb-10">
+                    <a href="cv.html" target="_blank" class="bg-white text-black px-6 py-3 rounded-xl font-bold hover:bg-red-500 hover:text-white transition flex items-center gap-2 text-sm">
+                        <i class="fas fa-file-alt"></i> View Web C.V.
+                    </a>
+                    <a href="Jody_Beggs_CV.pdf" target="_blank" class="border border-white/10 px-6 py-3 rounded-xl font-bold hover:border-red-500 transition flex items-center gap-2 text-sm">
+                        <i class="fas fa-file-pdf deadpool-red"></i> Download PDF
+                    </a>
+                </div>
+                
+                <!-- Identity Switcher Component -->
+                <div class="p-4 rounded-2xl glass border border-white/10 max-w-sm">
+                    <p class="text-[9px] font-bold text-white/40 mb-3 uppercase tracking-widest">Select Protocol</p>
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="switchIdentity('corporate')" id="btn-corporate" class="identity-btn px-3 py-1.5 rounded-lg border border-white/10 text-[9px] font-bold hover:border-red-500 transition active">01. Corporate</button>
+                        <button onclick="switchIdentity('casual')" id="btn-casual" class="identity-btn px-3 py-1.5 rounded-lg border border-white/10 text-[9px] font-bold hover:border-red-500 transition">02. Mercenary</button>
+                        <button onclick="switchIdentity('peak')" id="btn-peak" class="identity-btn px-3 py-1.5 rounded-lg border border-white/10 text-[9px] font-bold hover:border-red-500 transition">03. Peak Performance</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats / Intel Bar -->
+    <section class="py-12 border-y border-white/5 bg-white/[0.02]">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div class="text-center">
+                <p class="text-3xl font-bold deadpool-red">15+</p>
+                <p class="text-xs text-white/40 uppercase font-bold tracking-widest">Years in Field</p>
+            </div>
+            <div class="text-center">
+                <p class="text-3xl font-bold text-white">40+</p>
+                <p class="text-xs text-white/40 uppercase font-bold tracking-widest">Tech Stacks</p>
+            </div>
+            <div class="text-center">
+                <p class="text-3xl font-bold text-white">∞</p>
+                <p class="text-xs text-white/40 uppercase font-bold tracking-widest">Bugs Stomped</p>
+            </div>
+            <div class="text-center">
+                <p class="text-3xl font-bold text-white">1</p>
+                <p class="text-xs text-white/40 uppercase font-bold tracking-widest">Stab Wound</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dynamic Content -->
+    <main class="max-w-7xl mx-auto px-6 py-24">
+        <div class="flex flex-col lg:grid lg:grid-cols-3 gap-16">
+            
+            <!-- Right Column (Now First on Mobile): Skills & Info -->
+            <div id="skills" class="order-1 lg:order-2">
+                <div class="lg:sticky lg:top-32 space-y-12">
+                    <div>
+                        <h2 class="text-2xl font-bold mb-6 text-white/40 uppercase tracking-widest text-sm italic">Core Arsenal</h2>
+                        <div class="flex flex-wrap gap-2" id="skills-container">
+                            <!-- Loaded via JS -->
+                        </div>
+                    </div>
+
+                    <div class="p-8 rounded-3xl glass border border-white/5 relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-red-600/10 blur-3xl group-hover:bg-red-600/20 transition"></div>
+                        <h3 class="text-xl font-bold mb-4">Tactical Status</h3>
+                        <p class="text-white/60 text-sm leading-relaxed mb-6">
+                            Highly specialized in Python & Django architecture. Expert in "Fault Finding" and "Bug Stomping". 
+                            Currently operating out of South Africa with global reach.
+                        </p>
+                        <ul class="text-sm space-y-3">
+                            <li class="flex items-center gap-3"><i class="fas fa-check-circle deadpool-red"></i> Remote Capable</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-check-circle deadpool-red"></i> Hardware/IoT Ready</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-check-circle deadpool-red"></i> SaaS Architect</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Left Column (Now Second on Mobile): Experience -->
+            <div id="experience" class="lg:col-span-2 order-2 lg:order-1">
+                <h2 class="text-4xl font-bold mb-12 flex items-center gap-4">
+                    <i class="fas fa-skull-crossbones deadpool-red"></i> Mission History
+                </h2>
+                <div id="experience-container" class="space-y-8">
+                    <!-- Loaded via JS -->
+                    <div class="animate-pulse flex space-x-4">
+                        <div class="flex-1 space-y-4 py-1">
+                            <div class="h-4 bg-white/10 rounded w-3/4"></div>
+                            <div class="space-y-2">
+                                <div class="h-4 bg-white/10 rounded"></div>
+                                <div class="h-4 bg-white/10 rounded w-5/6"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Arsenal (Projects) Section -->
+        <section id="projects" class="py-24 bg-white/[0.01] border-y border-white/5">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-black italic tracking-tighter mb-4">THE <span class="deadpool-red">ARSENAL</span></h2>
+                    <p class="text-white/40 uppercase tracking-[0.3em] text-xs font-bold">Field-tested solutions and active deployments</p>
+                </div>
+                <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Loaded via JS -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-20 border-t border-white/5 text-center px-6">
+        <p class="text-white/40 text-sm mb-4">MAXIMUM EFFORT.</p>
+        <div class="flex justify-center gap-8 mb-8">
+            <a href="https://www.linkedin.com/in/jody-beggs-63953787" class="text-2xl hover:text-red-500 transition"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/jodybeggs" class="text-2xl hover:text-red-500 transition"><i class="fab fa-github"></i></a>
+        </div>
+        <p class="text-xs text-white/20">© 2026 JODY BEGGS. NO REGENERATING HEALING FACTOR INCLUDED IN BASE PACKAGE.</p>
+    </footer>
+
+    <!-- App Logic -->
+    <script>
+        let workData = null;
+        let projectsData = null;
+        let selectedSkills = new Set();
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            const isHidden = menu.classList.contains('hidden');
+            
+            if (isHidden) {
+                menu.classList.remove('hidden');
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                menu.classList.add('hidden');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        }
+
+        const identities = {
+            corporate: {
+                img: 'Generated_image.png',
+                title: 'The Professional',
+                desc: 'Ready for the corporate world.',
+                glow: 'opacity-20'
+            },
+            casual: {
+                img: 'Generated_image2.png',
+                title: 'The Mercenary',
+                desc: 'Swapping the suit for the red & black. Maximum effort.',
+                glow: 'opacity-40 bg-red-600'
+            },
+            peak: {
+                img: 'Generated_image3.png',
+                title: 'Peak Performance',
+                desc: 'A little cartoon blade never stopped a deployment. Regeneration in progress.',
+                glow: 'opacity-60 bg-red-600'
+            }
+        };
+
+        function switchIdentity(id) {
+            const data = identities[id];
+            const img = document.getElementById('main-image');
+            const title = document.getElementById('identity-title');
+            const desc = document.getElementById('identity-desc');
+            const glow = document.getElementById('identity-glow');
+
+            console.log('Switching to:', id, data);
+
+            // Animation
+            img.style.opacity = '0';
+            img.style.transform = 'scale(0.95)';
+            
+            setTimeout(() => {
+                img.src = data.img;
+                img.onload = () => {
+                    console.log('Image loaded successfully:', data.img);
+                    img.style.opacity = '1';
+                    img.style.transform = 'scale(1)';
+                };
+                img.onerror = () => {
+                    console.error('Failed to load image:', data.img);
+                    img.style.opacity = '1'; // Show anyway to see broken icon
+                };
+                
+                title.innerText = data.title;
+                desc.innerText = data.desc;
+                glow.className = `absolute -inset-4 rounded-[2rem] blur-3xl transition-all duration-700 ${data.glow}`;
+                
+                // Update buttons
+                document.querySelectorAll('.identity-btn').forEach(btn => btn.classList.remove('active'));
+                const activeBtn = document.getElementById('btn-' + id);
+                if (activeBtn) activeBtn.classList.add('active');
+            }, 300);
+        }
+
+        function renderExperience() {
+            const expContainer = document.getElementById('experience-container');
+            const filteredWork = workData.work_histories.filter(job => {
+                if (selectedSkills.size === 0) return true;
+                return job.skills.some(s => selectedSkills.has(s.name));
+            });
+
+            if (filteredWork.length === 0) {
+                expContainer.innerHTML = '<div class="p-12 text-center glass rounded-3xl border border-white/5"><p class="text-white/40 italic">No missions found with those specific skills. Tactical oversight?</p></div>';
+                return;
+            }
+
+            expContainer.innerHTML = filteredWork.map(job => {
+                // Convert markdown-style descriptions to HTML
+                let formattedDesc = job.description
+                    .replace(/#{4,}\s*(.*)/g, '<h4 class="text-lg font-bold mt-4 mb-2 text-white/80">$1</h4>')
+                    .replace(/#{3}\s*(.*)/g, '<h3 class="text-xl font-bold mt-6 mb-2 text-red-400">$1</h3>')
+                    .replace(/#{2}\s*(.*)/g, '<h2 class="text-2xl font-bold mt-8 mb-4 text-red-500">$1</h2>')
+                    .replace(/#{1}\s*(.*)/g, '<h1 class="text-3xl font-bold mt-10 mb-6 text-red-600">$1</h1>')
+                    .replace(/\*\*([^*]+)\*\*/g, '<strong class="text-white font-bold">$1</strong>')
+                    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" class="text-red-400 hover:underline inline-flex items-center gap-1">$1 <i class="fas fa-external-link-alt text-[10px]"></i></a>')
+                    .replace(/(?<!["'])(https?:\/\/[^\s\r\n<>]+)/g, '<a href="$1" target="_blank" class="text-red-400 hover:underline inline-flex items-center gap-1">$1 <i class="fas fa-external-link-alt text-[10px]"></i></a>')
+                    .split('\n')
+                    .map(p => p.trim() ? `<p class="mb-4">${p}</p>` : '')
+                    .join('');
+
+                return `
+                    <div class="p-8 rounded-3xl glass border border-white/5 card-hover group transition-all duration-500">
+                        <div class="flex justify-between items-start mb-6">
+                            <div>
+                                <h3 class="text-2xl font-bold group-hover:text-red-500 transition">${job.position}</h3>
+                                <p class="text-white/40 font-medium">${job.company} | ${job.start} - ${job.end || 'Present'}</p>
+                            </div>
+                        </div>
+                        <div class="text-white/60 text-sm leading-relaxed">
+                            ${formattedDesc}
+                        </div>
+                        <div class="mt-8 flex flex-wrap gap-2 pt-6 border-t border-white/5">
+                            ${job.skills.map(s => `<span class="text-[10px] uppercase tracking-tighter font-bold px-2 py-1 rounded ${selectedSkills.has(s.name) ? 'bg-red-500 text-white' : 'bg-white/5 text-white/40'}">${s.name}</span>`).join('')}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function toggleSkill(skillName, element) {
+            if (selectedSkills.has(skillName)) {
+                selectedSkills.delete(skillName);
+                element.classList.remove('active');
+            } else {
+                selectedSkills.add(skillName);
+                element.classList.add('active');
+            }
+            renderExperience();
+        }
+
+        // Fetch and Populate Data
+        async function initApp() {
+            try {
+                const [workRes, projectsRes] = await Promise.all([
+                    fetch('work_histories.json'),
+                    fetch('projects.json')
+                ]);
+                
+                workData = await workRes.json();
+                projectsData = await projectsRes.json();
+                
+                // Populate Experience (Initial)
+                renderExperience();
+
+                // Populate Projects
+                const projectsContainer = document.getElementById('projects-container');
+                projectsContainer.innerHTML = projectsData.projects.map(proj => {
+                    // Extract all unique URLs
+                    const allUrls = [...new Set(proj.description.match(/https?:\/\/[^\s\r\n]+/g) || [])];
+                    
+                    // Clean description: remove URLs and extra newlines
+                    let cleanDesc = proj.description
+                        .replace(/https?:\/\/[^\s\r\n]+/g, '')
+                        .replace(/[\r\n]+/g, ' ')
+                        .trim();
+                    
+                    if (cleanDesc.length > 200) cleanDesc = cleanDesc.substring(0, 200) + '...';
+
+                    // Generate buttons for each URL
+                    const buttonsHtml = allUrls.map(url => {
+                        let label = 'Launch Mission';
+                        let icon = 'fa-rocket';
+                        
+                        if (url.includes('apple.com')) {
+                            label = 'iOS App';
+                            icon = 'fab fa-apple';
+                        } else if (url.includes('play.google.com')) {
+                            label = 'Android App';
+                            icon = 'fab fa-google-play';
+                        } else if (url.includes('vercel.app') || url.includes('pythonanywhere.com')) {
+                            label = 'Live Site';
+                            icon = 'fas fa-external-link-alt';
+                        }
+
+                        return `
+                            <a href="${url}" target="_blank" class="flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-[10px] font-bold uppercase tracking-wider hover:bg-red-500 hover:border-red-500 transition-all duration-300">
+                                <i class="${icon}"></i> ${label}
+                            </a>
+                        `;
+                    }).join('');
+
+                    return `
+                        <div class="p-8 rounded-3xl glass border border-white/5 flex flex-col h-full group hover:border-red-500/30 transition-all duration-500">
+                            <div class="mb-6 h-12 flex items-center justify-between">
+                                <h3 class="text-xl font-bold group-hover:text-red-500 transition">${proj.name}</h3>
+                                <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-red-500 transition duration-500">
+                                    <i class="fas fa-microchip text-white/40 group-hover:text-white transition"></i>
+                                </div>
+                            </div>
+                            <p class="text-white/60 text-sm mb-8 flex-grow leading-relaxed">${cleanDesc}</p>
+                            <div class="flex flex-col gap-4">
+                                <div class="flex flex-wrap gap-2">
+                                    ${buttonsHtml}
+                                </div>
+                                <div class="flex items-center gap-4">
+                                    <span class="text-[10px] text-white/30 uppercase font-bold tracking-widest">${new Date(proj.created_at).getFullYear()}</span>
+                                    <div class="h-px bg-white/5 flex-grow"></div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+                // Populate Skills (unique list)
+                const allSkills = new Set();
+                workData.work_histories.forEach(j => j.skills.forEach(s => allSkills.add(s.name)));
+                const skillsContainer = document.getElementById('skills-container');
+                skillsContainer.innerHTML = Array.from(allSkills).sort().map(skill => `
+                    <button onclick="toggleSkill('${skill.replace(/'/g, "\\'")}', this)" class="skill-tag px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-xs font-bold hover:border-red-500 transition cursor-pointer">
+                        ${skill}
+                    </button>
+                `).join('');
+
+            } catch (err) {
+                console.error("Error loading intel:", err);
+                document.getElementById('experience-container').innerHTML = '<p class="text-red-500 italic">Error loading data. The enemy has compromised the signal.</p>';
+            }
+        }
+
+        initApp();
+    </script>
+</body>
+</html>
