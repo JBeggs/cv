@@ -2,6 +2,5 @@
   "version": 2,
   "name": "jody-beggs-mercenary-engineer",
   "cleanUrls": true,
-  "framework": null,
-  "staticImageOptimization": true
+  "framework": null
 }
